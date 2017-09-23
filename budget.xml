@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!-- budget.xml
+     Author: Emelie Ekenstedt 
+     Last modified: 20/10/2016 -->
+<?xml-stylesheet type="text/xsl" href="roomstyle.xsl"?>
+<!DOCTYPE rooms [
+<!ELEMENT rooms (quantity, room*)>
+    <!ELEMENT room (name, cost, level, bathroom, photo, linkList, TV?)> <!-- Room can be either luxury or budget -->
+    <!ELEMENT quantity (#PCDATA)> <!-- Number of available rooms -->
+        <!ATTLIST room type (luxury|budget) #REQUIRED>
+        <!ELEMENT name (#PCDATA)>
+        <!ATTLIST room nbrOfOccupants CDATA #REQUIRED> <!-- Number of people who can stay in the room -->
+        <!ELEMENT cost (shortTerm,longTerm)>
+            <!ELEMENT shortTerm (#PCDATA)> <!-- $ per day -->
+            <!ELEMENT longTerm (#PCDATA)> <!-- $ per week -->
+        <!ELEMENT level (upstairs|downstairs)>
+            <!ELEMENT upstairs (roofWindow?, balcony?, view)>
+                <!ELEMENT roofWindow EMPTY>
+                <!ELEMENT balcony (#PCDATA)>
+                <!ELEMENT view (#PCDATA)>
+            <!ELEMENT downstairs (veranda?, courtyard?, flooring, view)>
+                <!ELEMENT veranda (#PCDATA)>
+                <!ELEMENT courtyard (#PCDATA)>
+                <!ELEMENT flooring EMPTY>
+                    <!ATTLIST flooring type (wood|stone|carpet|other) #REQUIRED>
+        <!ELEMENT bathroom (#PCDATA)>
+        <!ELEMENT photo (#PCDATA)>
+        <!ELEMENT linkList (link*)> <!-- Links to recommendations page -->
+            <!ELEMENT link (#PCDATA)>
+        <!ELEMENT TV (#PCDATA)>
+<!ENTITY rm "Room">
+]>
+
+<rooms>
+    <quantity>3</quantity>
+    <room nbrOfOccupants="1" type="budget">
+        <name>Louis' &rm;</name>
+        <cost>
+            <shortTerm>22</shortTerm>
+            <longTerm>140</longTerm>
+        </cost>
+        <level>
+            <upstairs>
+                <roofWindow />
+                <balcony>small</balcony>
+                <view>Over driveway</view>
+            </upstairs>
+        </level>
+        <bathroom>Shared</bathroom>
+        <photo>images/SchlossMeersburg.jpg</photo>
+        <linkList>
+            <link>http://airheadbnb.com.au/airbodybnb/budget/rm1</link> <!-- Example link -->
+        </linkList>
+    </room>
+
+    <room nbrOfOccupants="1" type="budget">
+        <name>Charlotte's &rm;</name>
+        <cost>
+            <shortTerm>25</shortTerm>
+            <longTerm>150</longTerm>
+        </cost>
+        <level>
+            <upstairs>
+                <roofWindow />
+                <view>Garden view</view>
+            </upstairs>
+        </level>
+        <bathroom>Shared</bathroom>
+        <photo>images/Charlemagne_Sleigh_Bedroom_Set_940_620_80_s_c1_c.jpg</photo>
+        <linkList>
+            <link>http://airheadbnb.com.au/airbodybnb/budget/rm2</link> <!-- Example link -->
+        </linkList>
+    </room>
+
+    <room nbrOfOccupants="1" type="budget">
+        <name>Wilson's &rm;</name>
+        <cost>
+            <shortTerm>20</shortTerm>
+            <longTerm>135</longTerm>
+        </cost>
+        <level>
+            <downstairs>
+                <veranda>With garden access</veranda>
+                <flooring type="wood" />
+                <view>Garden view</view>
+            </downstairs>
+        </level>
+        <bathroom>Shared</bathroom>
+        <photo>images/e4a4c22eb9e69d17a4e0ece61deef5f1.jpg</photo>
+        <linkList>
+            <link>http://airheadbnb.com.au/airbodybnb/budget/rm3</link> <!-- Example link -->
+        </linkList>
+    </room>
+</rooms>

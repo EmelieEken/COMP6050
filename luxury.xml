@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!-- luxury.xml
+     Author: Emelie Ekenstedt 
+     Last modified: 20/10/2016 -->
+<?xml-stylesheet type="text/xsl" href="roomstyle.xsl"?>
+<!DOCTYPE rooms [
+<!ELEMENT rooms (quantity, room*)>
+    <!ELEMENT room (name, cost, level, bathroom, photo, linkList, TV?)> <!-- Room can be either luxury or budget -->
+    <!ELEMENT quantity (#PCDATA)> <!-- Number of available rooms -->
+        <!ATTLIST room type (luxury|budget) #REQUIRED>
+        <!ELEMENT name (#PCDATA)>
+        <!ATTLIST room nbrOfOccupants CDATA #REQUIRED> <!-- Number of people who can stay in the room -->
+        <!ELEMENT cost (shortTerm,longTerm)>
+            <!ELEMENT shortTerm (#PCDATA)> <!-- $ per day -->
+            <!ELEMENT longTerm (#PCDATA)> <!-- $ per week -->
+        <!ELEMENT level (upstairs|downstairs)>
+            <!ELEMENT upstairs (roofWindow?, balcony?, view)>
+                <!ELEMENT roofWindow EMPTY>
+                <!ELEMENT balcony (#PCDATA)>
+                <!ELEMENT view (#PCDATA)>
+            <!ELEMENT downstairs (veranda?, courtyard?, flooring, view)>
+                <!ELEMENT veranda (#PCDATA)>
+                <!ELEMENT courtyard (#PCDATA)>
+                <!ELEMENT flooring EMPTY>
+                    <!ATTLIST flooring type (wood|stone|carpet|other) #REQUIRED>
+        <!ELEMENT bathroom (#PCDATA)>
+        <!ELEMENT photo (#PCDATA)>
+        <!ELEMENT linkList (link*)> <!-- Links to recommendations page -->
+            <!ELEMENT link (#PCDATA)>
+        <!ELEMENT TV (#PCDATA)>
+<!ENTITY rm "Room">
+]>
+
+<rooms>
+    <quantity>3</quantity>
+    <room nbrOfOccupants="3" type="luxury">
+        <name>Arnold's &rm;</name>
+        <cost>
+            <shortTerm>35</shortTerm>
+            <longTerm>200</longTerm>
+        </cost>
+        <level>
+            <upstairs>
+                <roofWindow />
+                <balcony>large</balcony>
+                <view>Panoramic</view>
+            </upstairs>
+        </level>
+        <bathroom>Private</bathroom>
+        <photo>images/LuxuryRoom2.jpg</photo>
+        <linkList>
+            <link>http://airheadbnb.com.au/airbodybnb/luxury/rm1</link> <!-- Example link -->
+        </linkList>
+        <TV>LCD 40"</TV>
+    </room>
+
+    <room nbrOfOccupants="2" type="luxury">
+        <name>Marie's &rm;</name>
+        <cost>
+            <shortTerm>33</shortTerm>
+            <longTerm>190</longTerm>
+        </cost>
+        <level>
+            <downstairs>
+                <veranda>Small private</veranda>
+                <courtyard>Private</courtyard>
+                <flooring type="wood" />
+                <view>Garden view</view>
+            </downstairs>
+        </level>
+        <bathroom>Private</bathroom>
+        <photo>images/Adare-Manor-room-1.jpg</photo>
+        <linkList>
+            <link>http://airheadbnb.com.au/airbodybnb/luxury/rm2</link> <!-- Example link -->
+        </linkList>
+    </room>
+
+    <room nbrOfOccupants="2" type="luxury">
+        <name>Amelia's &rm;</name>
+        <cost>
+            <shortTerm>30</shortTerm>
+            <longTerm>180</longTerm>
+        </cost>
+        <level>
+            <downstairs>
+                <courtyard>Private</courtyard>
+                <flooring type="wood" />
+                <view>Garden view</view>
+            </downstairs>
+        </level>
+        <bathroom>Private</bathroom>
+        <photo>images/Monarch_Double_Bedroom.jpg</photo>
+        <linkList>
+            <link>http://airheadbnb.com.au/airbodybnb/luxury/rm3</link> <!-- Example link -->
+        </linkList>
+        <TV>LCD 35"</TV>
+    </room>
+
+</rooms>

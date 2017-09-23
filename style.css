@@ -1,0 +1,245 @@
+/*
+style.css
+Author: Emelie Ekenstedt
+Last modified: 20/10/2016
+*/
+
+/*For the pages top part*/
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+    background: rgba(204,238,204,0.85);
+    padding-top: 0.3cm;
+    padding-bottom: 0.15cm;
+    color: rgba(255,255,255,1);
+    font-family: 'Corben', cursive;
+    margin-bottom: 0cm;
+    margin-top: 0.5cm;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+h2 {
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-bottom: 0.7cm;
+    border-radius: 2px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/*For the sub heading AIR BODY BNB, h2 directly after h1*/
+h1 + h2 {
+    text-align: center;
+    text-transform: uppercase;
+    background: rgba(204,238,204,0.85);
+    padding-top: 0.1cm;
+    padding-bottom: 0.05cm;
+    margin-top: 0.4cm;
+    color: rgba(255,255,255,1);
+    font-family: 'Corben', cursive;
+}
+
+body {
+    background: #DDFFEE; /*Background behind image if image to small for the screen*/
+    background-image: url("images/rsz_2barleyf.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #555555;
+    font-family: 'Railway', sans-serif;
+    /*margin-left: 1cm; could have been included here but I wanted the title box to run from side to side*/
+
+}
+
+/*Navigation panel right beneath the titles*/
+nav {
+    display: block;
+    text-align: center;
+    padding-top: 0.1cm;
+    padding-bottom: 0.3cm;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 2px;
+
+}
+
+/*Adds extra space between sequential links*/
+a {
+    text-decoration: none;
+    padding-left: 0.25cm;
+    padding-right: 0.25cm;
+}
+
+/*For a-tags being direct children of a p-tag*/
+p > a {
+    padding-left: 0;
+}
+
+/*Unvisited link*/
+a:link {
+    color: #000088;
+}
+
+/*Visited link*/
+a:visited {
+    color: #999999;
+}
+
+/*Mouse over link*/
+a:hover {
+    font-size: larger;
+}
+
+/*Selected link*/
+a:active {
+    color: #FF2222;
+}
+
+/*All subsections with information on the index page*/
+div.subsection {
+    border-style: none;
+    padding: 0.5cm;
+    padding-top: 0cm;
+    margin-top: 0.4cm;
+    margin-bottom: 0.7cm;
+    background: rgba(204,238,204,0.85); /*Gives opacity of 15%*/
+    width: 65%;
+    min-width: 15cm;
+    overflow: auto;
+    margin-left: 1cm;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+/*Quick navigation panel for index page, to the right*/
+aside { 
+    position: fixed;
+    top: 6.3cm;
+    right: 1cm;
+    text-align: left;
+    padding: 0.3cm;
+    border-style: none;
+    background: #888888;
+    background: linear-gradient(#FFFFFF,#DDF7FF);
+    opacity: 0.85;
+    max-width: 5cm;
+    font-family: 'Railway', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    border-radius: 2px;
+    
+
+}
+
+/*The copyright statement at the bottom right of the index page*/
+#copyright {
+    position: static;
+    bottom: 0;
+    float: right;
+    margin-right: 1cm;
+}
+
+/*Images are floated to the left and given a thin green border + padding, if not overridden by inline CSS*/
+img {
+    float: left;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(204,238,204,1);
+    padding: 1cm;
+    background: rgba(255,255,255,0.6);
+    opacity: 1;
+    margin-right: 0.3cm;
+}
+
+/*Make extra space between itams in unordered list*/
+ul {
+    line-height: 1.5;
+}
+
+/*Form layout, centered*/
+form {
+    background-color: rgba(204,238,204,0.85);
+    padding: 0.5cm;
+    border-radius: 2px;
+    position: absolute;
+    top: 6.4cm;
+    right: 1cm;
+    left: 1cm;
+    min-width: 20cm;
+    font-size: 14px;
+}
+
+/*Layout for the two individual parts of the form*/
+fieldset {
+    display: inline-block;
+    text-align: left;
+    width: 46%;
+    min-width: 7cm;
+    padding: 0.2cm;
+    background-color: rgba(252,248,248,0.85);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5cm;
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 1.5;
+    padding-left: 0.5cm;
+    height: 9.7cm;
+}
+
+/*Centered green square for background to room description*/
+main.roomDescription {
+    background: rgba(204,238,204,0.85); /*Gives opacity of 15%*/
+    width: auto;
+    border-style: none;
+    margin-left: 1cm;
+    margin-right: 1cm;
+    border-radius: 2px;
+    min-width: 19cm;
+    padding-top: 0.5cm;
+    margin-top: 0.3cm;
+    
+}
+
+/*Styling for individual rooms*/
+div.subsectionRoom {
+    border-style: none;
+    padding: 0.3cm;
+    margin-right: 1cm;
+    min-width: 15cm;
+    overflow: auto;
+    font-size: 14px;
+    border-top: 1px solid black
+}
+
+/*To create extra empty space in form*/
+input, select {
+    margin-bottom: 20px; 
+    margin-top: 3px; 
+}
+
+/*Header under navigation bar*/
+h1.mainHeader {
+    font-size: 32px;
+    background: none;
+    box-shadow: none;
+    margin-top: 0cm;
+    text-align: center;
+    color: #555555;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/*Make larger buttons than default*/
+.button {
+    width: 3cm;
+    height: 0.7cm;
+    margin-top: 0.5cm; 
+    font-size: 14px;
+}
+

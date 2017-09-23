@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- survey.html
+     Author: Emelie Ekenstedt 
+     Last modified: 21/10/2016 -->
+<html>
+    <head>
+        <title>Reviewform for previous guests</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Railway" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Corben:700" rel="stylesheet">
+
+        <script type="text/javascript">
+            function validateForm() {
+                if (document.getElementById("name").value == "") { //If name not filled in
+                    alert("Please fill in your name");
+                    return false;
+                }
+                else if (document.getElementById("email").value == "") { //If email not filled in
+                    alert("Please fill in your email address");
+                    return false;
+                }
+                else if (!isEmail(document.getElementById("email").value)) { //If wrong kind of input for email
+                    alert("Invalid email format");
+                    return false;
+                }
+                else if (document.getElementById("continentDropDown").value == "none") { //If no continent has been chosen
+                    alert("Please chose a continent from the list");
+                    return false;
+                } 
+                else if (document.getElementById("age").value == "") { //If age not filled in
+                    alert("Please fill in your age");
+                    return false;
+                }
+                else if (!isNumber(document.getElementById("age").value)) { //If wrong kind of input for age
+                    alert("Invalid age, should be an integer");
+                    return false;
+                } 
+                else if (!genderChoosen()){ //If gender not chosen
+                    alert("Please fill in your gender");
+                    return false;
+                }//Start of non-mandatory
+                else if (document.getElementById("stays").value != "" && !isNumber(document.getElementById("stays").value)) { //If number od stays isn't an integer
+                    alert("Please let number of stays with us be an integer");
+                    return false;
+                }
+                else {
+                    alert("Thanks for sending us your review!");
+                    return true;
+                }
+            }
+
+            function isNumber(num) { //Checks if num is an integer
+                var numberPattern = /^\d+$/
+                if (numberPattern.test(num)) {
+                    return true;
+                }
+                return false;
+            }
+
+            function isEmail(address) { //Checks if there is a '.'' after a '@''
+                var atIndex = address.indexOf('@');
+                var dotIndex = address.lastIndexOf('.');
+                if (atIndex == -1 || dotIndex == -1 || dotIndex < atIndex) {
+                    return false;
+                }
+                return true;
+            }
+
+            function genderChoosen() { //True if one box checked
+                return (((document.getElementById("man").checked==true) && (document.getElementById("woman").checked==false)) || 
+                ((document.getElementById("man").checked==false) && (document.getElementById("woman").checked==true)));
+            }
+        </script>
+    </head>
+    <body>
+        <section>
+            <header>
+                <h1>Air Head BnB</h1>
+                <h2>Air Body BnB</h2>
+            </header>
+
+            <nav> <!-- Navigation to all other pages -->
+                <a href="index.html">Home</a>
+                <a href="http://www.blogtyrant.com/best-about-us-pages/">About us</a>
+                <a href="luxury.xml">Luxury</a>
+                <a href="budget.xml">Budget</a> 
+                <a href="http://www.blogtyrant.com/best-contact-us-pages/">Contact</a> 
+                <a href="survey.html">Leave a review</a>
+                <a href="https://www.visser.com.au/blog/generic-privacy-policy-for-australian-websites/">Privacy Policy</a>
+                <a href="https://media.termsfeed.com/pdf/terms-and-conditions-template.pdf">Terms and Conditions</a>
+            </nav>
+
+            <main> <!-- Start of form -->
+                <form name="reviewForm" method="post" action="mailTo:Emelie.Ekenstedt@uon.edu.au" enctype="text/plain">
+
+                    <h1 class="mainHeader">Reviewform</h1> <!-- Main header for lower part of page -->
+                    <p>In order to keep up a good standard we ask you who have stayed with us before to fill in this reviewform. 
+                        Please press the submit button in the lower left corner of the page when you are finished. Your opinion 
+                        matters the most to us, Thanks! A link to our privacy policy can be found in the navigation bar above. </p>
+
+                    <fieldset id="personalDetails" style="margin-right: 0.2cm;"> <!-- Personal details form, includes name, email, continent, age and gender -->
+                        <legend>Personal details</legend> <!-- Box legend -->
+                     
+                        <label for="name">Name *</label> <br>
+                        <input type="text" name="fullName" id="name" placeholder="Firstname Lastname" style="width: 5cm;"> <br>
+                        <label for="email">Email *</label> <br>
+                        <input type="text" name="email" id="email" placeholder="name@mail.com" style="width: 5cm;"> <br>
+
+                        <label for="continentDropDown">Continent of residence *</label> <br>
+                        <select name="continent" id="continentDropDown">
+                            <option value="none">Please choose</option>
+                            <option value="asia">Asia</option>
+                            <option value="europe">Europe</option>
+                            <option value="northAmerica">North America</option>
+                            <option value="southAmerica">South America</option>
+                            <option value="africa">Africa</option>
+                            <option value="oceania">Oceania</option>
+                            <option value="antarctica">Antarctica</option>
+                        </select> <br>
+
+                        <label for="age">Age *</label> <br>
+                        <input type="text" id="age" name="age"> <br>
+
+                        <label for="man">Gender *</label> <br>
+                        <input type="radio" id="man" name="gender" value="man"> Man 
+                        <input type="radio" id="woman" name="gender" value="woman"> Woman <br>                        
+
+                        <p style="font-size: 10px;">* Obligatory fields</p>
+
+                    </fieldset>
+                    <fieldset id="roomComments" style="float: right"> <!-- Room comments form, contains length os stay, number of previous stays, room stayed in, rating and comments -->
+                        <legend>Your impression</legend>
+
+                        <label for="lengthOfStay">Length of stay</label> <br>
+                        <input type="radio" id="lengthOfStay" name="lengthOfStay" value="lessThanAWeek"> Less than a week
+                        <input type="radio" name="lengthOfStay" value="oneWeek"> One week
+                        <input type="radio" name="lengthOfStay" value="overOneWeek"> More than one week <br>
+
+                        <!-- Textfield for number of previous stays, is checked for being a number if filled in -->
+                        <label for="stays">How many times have you stayed with us before?</label> <br>
+                        <input type="text" name="stays" id="stays"> <br>
+
+                        <!-- Dropdown menue for which room they lived in -->
+                        <label for="room">Room</label> <br>
+                        <select name="room" id="room">
+                            <option value="none">Please choose</option>
+                            <option value="Arnold">Arnold's room</option>
+                            <option value="Marie">Marie's room</option>
+                            <option value="Amelia">Amelia's room</option>
+                            <option value="Louis">Louis's room</option>
+                            <option value="Wilson">Wilson's room</option>
+                            <option value="Charlotte">Charlotte's room</option>
+                        </select> <br> 
+
+                        <!-- 5 radiobuttons for rating -->
+                        <label for="rating">Overall rating (1-5 stars)</label> <br> 
+                        <input type="radio" id="rating" name="rating" value="1"> 1
+                        <input type="radio" name="rating" value="2"> 2
+                        <input type="radio" name="rating" value="3"> 3
+                        <input type="radio" name="rating" value="4"> 4
+                        <input type="radio" name="rating" value="5"> 5 <br>
+
+                        <!-- Comment textbox -->
+                        <label for="comments">Comments</label> <br>
+                        <textarea id="comments" name="comments" rows="5" cols="40"></textarea> <br>
+                      
+                    </fieldset> <br>
+
+                    <!-- Submit and reset buttons -->
+                    <input type="submit" class="button" value="Submit" onclick="return validateForm()">
+                    <input type="reset" class="button" value="Clear">
+
+                </form>
+            </main>
+        </section>
+    </body>
+</html>
